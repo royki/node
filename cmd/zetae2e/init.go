@@ -19,7 +19,7 @@ func NewInitCmd() *cobra.Command {
 		RunE:  initConfig,
 	}
 
-	InitCmd.Flags().StringVar(&initConf.RPCs.EVM, "ethURL", "http://eth:8545", "--ethURL http://eth:8545")
+	InitCmd.Flags().StringVar(&initConf.RPCs.EVM, "ethURL", "http://l1:8545", "--ethURL http://l1:8545")
 	InitCmd.Flags().StringVar(&initConf.RPCs.ZetaCoreGRPC, "grpcURL", "zetacore0:9090", "--grpcURL zetacore0:9090")
 	InitCmd.Flags().
 		StringVar(&initConf.RPCs.ZetaCoreRPC, "rpcURL", "http://zetacore0:26657", "--rpcURL http://zetacore0:26657")

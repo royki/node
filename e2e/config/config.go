@@ -121,7 +121,7 @@ func DefaultConfig() Config {
 	return Config{
 		RPCs: RPCs{
 			Zevm: "http://zetacore0:8545",
-			EVM:  "http://eth:8545",
+			EVM:  "http://l1:8545",
 			Bitcoin: BitcoinRPC{
 				Host:         "bitcoin:18443",
 				User:         "smoketest",
