@@ -54,11 +54,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: ${ZETACORED_START_PERIOD-30s}
-<<<<<<< Updated upstream
       # start_interval: 1s
-=======
-      #start_interval: 1s
->>>>>>> Stashed changes
     networks:
       mynetwork:
         ipv4_address: 172.20.0.11
