@@ -234,6 +234,10 @@ start-e2e-test: zetanode
 	@echo "--> Starting e2e test"
 	cd contrib/localnet/ && $(DOCKER) compose up -d
 
+stop-e2e-test:
+	@echo "--> Stopping e2e test"
+	cd contrib/localnet/ && $(DOCKER) compose --profile all down --remove-orphans
+
 start-e2e-admin-test: zetanode
 	@echo "--> Starting e2e admin test"
 	export E2E_ARGS="--skip-regular --test-admin" && \
