@@ -53,7 +53,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: ${ZETACORED_START_PERIOD}
+      start_period: ${ZETACORED_START_PERIOD-30s}
       # start_interval: 1s
     networks:
       mynetwork:
@@ -62,7 +62,7 @@ services:
     environment:
       - HOTKEY_BACKEND=file
       - HOTKEY_PASSWORD=password # test purposes only
-      - ZETACORED_IMPORT_GENESIS_DATA=${ZETACORED_IMPORT_GENESIS_DATA}
+      - ZETACORED_IMPORT_GENESIS_DATA=${ZETACORED_IMPORT_GENESIS_DATA-}
     volumes:
       - ssh:/root/.ssh
       - ~/.zetacored/genesis_data:/root/genesis_data
@@ -87,6 +87,7 @@ services:
     hostname: zetacore2
     profiles:
       - stress
+      - all
     networks:
       mynetwork:
         ipv4_address: 172.20.0.13
@@ -103,6 +104,7 @@ services:
     hostname: zetacore3
     profiles:
       - stress
+      - all
     networks:
       mynetwork:
         ipv4_address: 172.20.0.14
@@ -153,6 +155,7 @@ services:
     hostname: zetaclient2
     profiles:
       - stress
+      - all
     networks:
       mynetwork:
         ipv4_address: 172.20.0.23
@@ -171,6 +174,7 @@ services:
     hostname: zetaclient3
     profiles:
       - stress
+      - all
     networks:
       mynetwork:
         ipv4_address: 172.20.0.24
@@ -201,6 +205,7 @@ services:
     hostname: eth2
     profiles:
       - eth2
+      - all
     platform: linux/amd64
     ports:
       - "8566:8545"
@@ -242,9 +247,9 @@ services:
       eth:
     entrypoint: ["/work/start-zetae2e.sh", "local"]
     environment:
-      - LOCALNET_MODE=${LOCALNET_MODE}
-      - E2E_ARGS=${E2E_ARGS}
-      - UPGRADE_HEIGHT=${UPGRADE_HEIGHT}
+      - LOCALNET_MODE=${LOCALNET_MODE-}
+      - E2E_ARGS=${E2E_ARGS-}
+      - UPGRADE_HEIGHT=${UPGRADE_HEIGHT-}
     volumes:
       - ssh:/root/.ssh
 
@@ -254,6 +259,7 @@ services:
     hostname: upgrade-host
     profiles:
       - upgrade
+      - all
     entrypoint: ["/root/start-upgrade-host.sh"]
     networks:
       mynetwork:
@@ -268,6 +274,7 @@ services:
     hostname: upgrade-orchestrator
     profiles:
       - upgrade
+      - all
     entrypoint: ["/root/start-upgrade-orchestrator.sh"]
     networks:
       mynetwork:
@@ -276,7 +283,7 @@ services:
       - zetacore0
       - upgrade-host
     environment:
-      - UPGRADE_HEIGHT=${UPGRADE_HEIGHT}
+      - UPGRADE_HEIGHT=${UPGRADE_HEIGHT-}
     volumes:
       - ssh:/root/.ssh
 volumes:
