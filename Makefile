@@ -215,8 +215,23 @@ start-localnet-skip-build:
 stop-localnet:
 	cd contrib/localnet/ && $(DOCKER) compose --profile all down --remove-orphans
 
+start-zeta-localnet-with-op:
+	if [ ! -d ../optimism ]; then \
+		@echo "--> Clone Optimism repo"; \
+		git clone -b integrate/zetachain https://github.com/royki/optimism.git ../optimism; \
+	fi
+	@echo "--> Starting Optimism devnet"
+	cd ../optimism && make devnet-up
+	git checkout integrate/optimism
+	make start-localnet
+
+stop-zeta-localnet-with-op:
+	make stop-localnet
+	cd ../optimism && make devnet-down && make devnet-clean
+	# rm -rf ../optimism
+
 ###############################################################################
-###                         E2E tests               						###
+###                         E2E tests               			    ###
 ###############################################################################
 
 zetanode:
@@ -237,6 +252,22 @@ start-e2e-test: zetanode
 stop-e2e-test:
 	@echo "--> Stopping e2e test"
 	cd contrib/localnet/ && $(DOCKER) compose --profile all down --remove-orphans
+
+start-e2e-test-with-op:
+	if [ ! -d ../optimism ]; then \
+		@echo "--> Cloning Optimism repo"; \
+		git clone -b integrate/zetachain https://github.com/royki/optimism.git ../optimism; \
+	fi
+	@echo "--> Starting Optimism devnet"
+	cd ../optimism && make devnet-up
+	make start-e2e-test
+
+stop-e2e-test-with-op:
+	@echo "--> Stopping e2e test"
+	cd contrib/localnet/ && $(DOCKER) compose --profile all down --remove-orphans
+	cd ../optimism && make devnet-down && make devnet-clean
+	# rm -rf ../optimism
+
 
 start-e2e-admin-test: zetanode
 	@echo "--> Starting e2e admin test"
