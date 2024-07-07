@@ -234,15 +234,6 @@ stop-zeta-localnet-with-op:
 ###############################################################################
 
 zetanode:
-	if [ "${MAKELEVEL}" -eq "0" ]; then \
-		if [ "${MAKECMDGOALS}" = "start-localnet" ]; then \
-			echo "Switching to develop branch" \
-			git checkout develop; \
-		elif [ "${MAKECMDGOALS}" = "start-zeta-localnet-with-op" ]; then \
-			echo "Switching to integrate/optimism branch" \
-			git checkout integrate/optimism; \
-		fi; \
-	fi
 	@echo "Building zetanode"
 	$(DOCKER) build -t zetanode --target latest-runtime -f ./Dockerfile-localnet .
 	$(DOCKER) build -t orchestrator -f contrib/localnet/orchestrator/Dockerfile.fastbuild .
