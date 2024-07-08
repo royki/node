@@ -221,7 +221,7 @@ start-zeta-localnet-with-op:
 		git clone -b integrate/zetachain https://github.com/royki/optimism.git ../optimism; \
 	fi
 	@echo "--> Starting Optimism devnet"
-	cd ../optimism && make devnet-up
+	cd ../optimism && git pull origin integrate/zetachaini && make devnet-up
 	make start-localnet
 
 stop-zeta-localnet-with-op:
@@ -258,7 +258,7 @@ start-e2e-test-with-op:
 		git clone -b integrate/zetachain https://github.com/royki/optimism.git ../optimism; \
 	fi
 	@echo "--> Starting Optimism devnet"
-	cd ../optimism && make devnet-up
+	cd ../optimism && git pull origin integrate/zetachain && make devnet-up
 	make start-e2e-test
 
 stop-e2e-test-with-op:
