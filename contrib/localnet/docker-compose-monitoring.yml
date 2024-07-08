@@ -19,7 +19,7 @@ services:
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "9091:9090"
     networks:
       mynetwork:
         ipv4_address: 172.20.0.31
@@ -36,7 +36,7 @@ services:
       mynetwork:
         ipv4_address: 172.20.0.32
     environment:
-      - GETH=http://eth:8545
+      - GETH=http://l1:8545
 
 networks:
   mynetwork:
