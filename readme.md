@@ -63,6 +63,23 @@ message handler functions and retrieves the documentation for those functions.
 Finally, it creates a `messages.md` file for each module, which contains the
 documentation for all the messages in that module.
 
+## Run ZetaChain localnet with Optimism devnet
+- Clone branch `integrate/optimism`
+  - `git clone -b integrate/optimism https://github.com/royki/node.git`
+- `cd node`
+- Start zetachain localnet and optimism devnet
+  - `make start-zeta-localnet-with-op`
+- Start monitoring
+  - `make start-monitoring`
+- Stop monitoring
+  - `make stop-monitoring`
+- Stop zetachain localnet and optimism devnet
+  - `make stop-zeta-localnet-with-op`
+- Start e2e tests
+  - `make start-e2e-test-with-op`
+- Stop/remove zetachain localnet and optimism devnet
+  - `make stop-e2e-test-with-op`
+
 ## Further Reading
 
 Find below further documentation for development and running your own ZetaChain node:
@@ -70,6 +87,7 @@ Find below further documentation for development and running your own ZetaChain 
 * [Run the E2E tests and interact with the localnet](docs/development/LOCAL_TESTING.md)
 * [Make a new ZetaChain release](docs/development/RELEASES.md)
 * [Deploy your own ZetaChain or Bitcoin node](docs/development/DEPLOY_NODES.md)
+
 
 ## Community
 
