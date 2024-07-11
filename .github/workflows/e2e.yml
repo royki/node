@@ -9,10 +9,10 @@ on:
       - "*"
   merge_group:
   workflow_dispatch:
-  schedule:
+  # schedule:
     # run at 6AM UTC Daily
     # 6AM UTC -> 11PM PT
-    - cron: "0 6 * * *"
+    # - cron: "0 6 * * *"
 
 concurrency: 
   group: e2e-${{ github.head_ref || github.sha }}
