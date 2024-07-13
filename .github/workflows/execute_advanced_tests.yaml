@@ -19,10 +19,10 @@ on:
         type: boolean
         required: false
         default: false
-  schedule:
+  # schedule:
     # run at 6AM UTC Daily
     # 6AM UTC -> 11PM PT
-    - cron: "0 6 * * *"
+    # - cron: "0 6 * * *"
 
 jobs:
   e2e-stateful-upgrade-test:
