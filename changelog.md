@@ -4,7 +4,7 @@
 
 ### Breaking Changes
 
-* [List of the breaking changes can be found in this document](docs/releases/v17_breaking_changes.md)
+* [2460](https://github.com/zeta-chain/node/pull/2460) - Upgrade to go 1.22. This required us to temporarily remove the QUIC backend from [go-libp2p](https://github.com/libp2p/go-libp2p). If you are a zetaclient operator and have configured quic peers, you need to switch to tcp peers.
 
 ### Features
 
@@ -58,6 +58,7 @@
 * [2375](https://github.com/zeta-chain/node/pull/2375) - improve & speedup code formatting
 * [2380](https://github.com/zeta-chain/node/pull/2380) - use `ChainInfo` in `authority` to allow dynamically support new chains
 * [2395](https://github.com/zeta-chain/node/pull/2395) - converge AppContext with ZetaCoreContext in zetaclient
+* [2428](https://github.com/zeta-chain/node/pull/2428) - propagate context across codebase & refactor zetacore client
 
 ### Tests
 
@@ -76,7 +77,8 @@
 * [2349](https://github.com/zeta-chain/node/pull/2349) - add TestBitcoinDepositRefund and WithdrawBitcoinMultipleTimes E2E tests
 * [2368](https://github.com/zeta-chain/node/pull/2368) - eliminate panic usage across testing suite
 * [2369](https://github.com/zeta-chain/node/pull/2369) - fix random cross-chain swap failure caused by using tiny UTXO
-
+* [2549](https://github.com/zeta-chain/node/pull/2459) - add separate accounts for each policy in e2e tests
+* [2415](https://github.com/zeta-chain/node/pull/2415) - add e2e test for upgrade and test admin functionalities
 
 ### Fixes
 
@@ -89,6 +91,7 @@
 * [2327](https://github.com/zeta-chain/node/pull/2327) - partially cherry picked the fix to Bitcoin outbound dust amount
 * [2362](https://github.com/zeta-chain/node/pull/2362) - set 1000 satoshis as minimum BTC amount that can be withdrawn from zEVM
 * [2382](https://github.com/zeta-chain/node/pull/2382) - add tx input and gas in rpc methods for synthetic eth txs
+* [2396](https://github.com/zeta-chain/node/issues/2386) - special handle bitcoin testnet gas price estimator
 * [2434](https://github.com/zeta-chain/node/pull/2434) - the default database when running `zetacored init` is now pebbledb
 
 ### CI
