@@ -7,8 +7,8 @@ on:
         description: 'The EVM endpoint you want to test.'
         required: false
         default: 'http://localhost:9545'
-  schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
+  # schedule:
+  #  - cron: '0 0 * * *' # Runs every day at midnight UTC
 
 jobs:
   nightly_evm_api_performance_test:
